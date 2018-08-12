@@ -37,3 +37,41 @@
             title: "Department",
             subject: "Computer Science"
         }];
+
+function setUser(user, image, name, id) {
+    img.src = user.image;
+    img.alt = user.name;
+    name.innerText = user.name;
+    id.innerText = 'User #:' + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10)
+}
+
+setUser(user, document.getElementById("userImg"), document.getElementById("username"), document.getElementById("userId"));
+
+function formatTime(time) {
+    if(time < 10) {
+        return "0" + time;
+    } else {
+        return time;
+    }
+}
+
+function getTime() {
+    var now = new Date();
+    var hours = formatTime(now.getHours());
+    var minutes = formatTime(now.getMinutes());
+    var seconds = formatTime(now.getSeconds());
+    var month = formatTime(now.getMonth() + 1);
+    var date = formatTime(now.getDate());
+    var year = now.getFullYear() - 2000;
+    return month + "/" + date + "/" + year + "   |   " + hours + ":" + minutes + ":" + seconds
+}
+
+function setTime(el) {
+    el.style.whiteSpace = "pre"
+    el.innerText = getTime();
+    var elem = el;
+    setTimeout(function() {
+        return setTime(elem);
+    }, 1000)
+}
+setTime(document.getElementById("time"));
