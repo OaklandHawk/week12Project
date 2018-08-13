@@ -75,3 +75,39 @@ function setTime(el) {
     }, 1000)
 }
 setTime(document.getElementById("time"));
+
+
+function setActive(arr, title, list, str) {
+    title.innerText = str
+    list.innerHTML = "";
+    for(var i = 0; i < arr.length; i++) {
+        list.innerHTML += "<li><h4>" + arr[i].title + "</h4><p>" + arr[i].subject + "</p></li>"
+    }
+}
+setActive(courseArr, document.getElementById("active-title"), document.getElementById("active-list"), "My Courses: ")
+
+function setProgress(user, bar, percent) {
+    bar.style.width = user.progress * 100 + "%";
+    percent.innerText = user.progress * 100 + "%";
+}
+setProgress(user, document.getElementById("progress-inner"), document.getElementById("progress-percent"))
+
+// the impure functions
+function showCourses() {
+    setActive(courseArr, document.getElementById("active-title"), document.getElementById("active-list"), "My Courses: ")
+}
+function showActivity() {
+    setActive(activityArr, document.getElementById("active-title"), document.getElementById("active-list"), "My Recent Activity: ") 
+}
+function showAccount() {
+    setActive(accountArr, document.getElementById("active-title"), document.getElementById("active-list"), "My Account: ")  
+}
+function expandMenu() {
+    if(document.getElementsByTagName("main")[0].style.width) {
+        document.getElementsByTagName("main")[0].style = "";
+        document.getElementsByTagName("nav")[0].className = "";
+    } else {
+        document.getElementsByTagName("main")[0].style = "padding: 30px 5vw;; width: 75vw";
+        document.getElementsByTagName("nav")[0].className = "open";
+    }
+}
